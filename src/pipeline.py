@@ -9,6 +9,7 @@ from src.media_ingest import (
 )
 from src.model1_extractor import extract_raw_context
 from src.model2_analyzer import analyze_video_information
+from src.audio_transcriber import transcribe_audio_file
 from src.video_processor import extract_audio_track, extract_keyframes
 
 
@@ -46,8 +47,7 @@ def run_video_analysis_pipeline(
             video_path=video_path,
             output_dir=audio_dir,
         )
-        # Catatan: jika nanti kamu menambahkan modul ASR (Whisper) untuk mengisi `transcript`
-        # dari `_audio_path`, cukup isi variabel `transcript` di tahap ini sebelum ke Model 1.
+        transcript, asr_status = transcribe_audio_file(_audio_path)
 
         # 1. Deteksi AI opsional (hanya status indikasi, tanpa skor detail)
         ai_result = detect_ai_content(
@@ -55,7 +55,7 @@ def run_video_analysis_pipeline(
             enabled=enable_ai_check,
         )
 
-        # 2. Model 1: ekstraksi mentah ke variabel internal (tidak ditampilkan di UI)
+        # 2. Model 1: ekstraksi mentah (audio + visual) ke variabel internal
         model1_out = extract_raw_context(
             transcript=transcript,
             frame_paths=frame_paths,
