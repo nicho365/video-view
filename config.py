@@ -12,6 +12,14 @@ MAX_IMAGE_SIDE_PX = 768
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "")
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1/chat/completions"
 
+# Groq API (opsional, untuk transkripsi audio Whisper cepat di cloud)
+GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
+GROQ_TRANSCRIPTION_URL = "https://api.groq.com/openai/v1/audio/transcriptions"
+ASR_MODEL_CANDIDATES = [
+    "whisper-large-v3-turbo",
+    "distil-whisper-large-v3-en",
+]
+
 # Urutan model untuk Model 1 (Ekstraksi visual & teks layar -> deskripsi mentah)
 # Ganti/sesuaikan dengan model multimodal/vision gratis yang aktif saat kamu deploy
 MODEL1_CANDIDATES = [
