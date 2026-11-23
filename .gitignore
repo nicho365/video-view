@@ -1,0 +1,30 @@
+# Environment & secrets
+.env
+*.env
+.env.*
+
+# Python cache & virtual environments
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+venv/
+env/
+
+# Temporary media & artifacts
+vid_analyzer_*/
+*.mp4
+*.mov
+*.webm
+*.mkv
+*.wav
+*.jpg
+*.jpeg
+*.png
+
+# IDE & OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
